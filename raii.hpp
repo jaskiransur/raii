@@ -3,7 +3,7 @@
 #define raii_hpp
 
 #define TEMPLATE template<typename acquirer_type, typename releaser_type, typename resource_type, typename... Args>
-#define SCOPE raii<typename acquirer_type, typename releaser_type, typename resource_type, typename... Args>
+#define SCOPE std::raii<typename acquirer_type, typename releaser_type, typename resource_type, typename... Args>
 
 TEMPLATE
 SCOPE::raii(resource_type& resource, Args&& ...args)

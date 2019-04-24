@@ -4,24 +4,27 @@
 namespace std
 { 
 
-template<typename acquirer_type, typename releaser_type, typename resource_type, typename... Args>
+template<typename acquirer_type,
+		 typename releaser_type, 
+		 typename resource_type, 
+		 typename... Args>
 class raii
 {
-
-	/*! takes a resource_type and multiple number of arguments (0 or more) argumets
+public:
+	/*! takes a resource_type and multiple number of arguments (0 or more) arguments
 	   precondition: The resource_type is already constructor, and the creator merely applies a predicate on it.
 	The predicate may take an argument or none at all.
 	*/
 	raii(resource_type& resource, Args&& ...args);
 
 	/*! woraround for a tempResource&
-	takes a resource and multiple number of arguments (0 or more) argumets
+	takes a resource and multiple number of arguments (0 or more) arguments
 	precondition: The resource is already constructed, and the creator merely applies a predicate on it.
 	The predicate may take an argument or none at all.
 	*/
 	raii(resource_type* resource, Args&& ...args);
 
-	/*! takes a resource and multiple number of arguments (0 or more) argumets
+	/*! takes a resource and multiple number of arguments (0 or more) arguments
 	   precondition: The resource is already constructor, and the creator merely applies a predicate on it.
 	   The predicate may take an argument or none at all.
 	*/
@@ -66,5 +69,7 @@ class raii
 private:
 	resource_type resource_;
 };
+
 }
+#include "raii.hpp"
 #endif // !raii_h
